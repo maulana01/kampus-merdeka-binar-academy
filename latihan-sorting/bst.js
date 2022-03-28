@@ -25,36 +25,33 @@ class BinarySearchTree {
       }
     }
   }
-  // contains(value) {
-  //   if (value === this.value) {
-  //     return true;
-  //   } else if (value < this.value) {
-  //     if (!this.left) {
-  //       return false;
-  //     } else {
-  //       return this.left.contains(value);
-  //     }
-  //   } else {
-  //     if (!this.right) {
-  //       return false;
-  //     } else {
-  //       return this.right.contains(value);
-  //     }
-  //   }
-  // }
-  // depthFirstLog(cb) {
-  //   cb(this.value);
-  //   if (this.left) {
-  //     this.left.depthFirstLog(cb);
-  //   }
-  //   if (this.right) {
-  //     this.right.depthFirstLog(cb);
-  //   }
-  // }
+  contains(value) {
+    if (value === this.value) {
+      return true;
+    } else if (value < this.value) {
+      if (!this.left) {
+        return false;
+      } else {
+        return this.left.contains(value);
+      }
+    } else {
+      if (!this.right) {
+        return false;
+      } else {
+        return this.right.contains(value);
+      }
+    }
+  }
+  depthFirstLog(cb) {
+    cb(this.value);
+    if (this.left) {
+      this.left.depthFirstLog(cb);
+    }
+    if (this.right) {
+      this.right.depthFirstLog(cb);
+    }
+  }
   // create a method that will return preorder traversal of the tree
-  // create a method that will return inorder traversal of the tree
-  // create a method that will return postorder traversal of the tree
-  // create a method that will return breadth first traversal of the tree
   preorder() {
     let result = [];
     let _walk = (node) => {
@@ -69,6 +66,7 @@ class BinarySearchTree {
     _walk(this);
     return result;
   }
+  // create a method that will return inorder traversal of the tree
   inorder() {
     let result = [];
     let _walk = (node) => {
@@ -83,6 +81,7 @@ class BinarySearchTree {
     _walk(this);
     return result;
   }
+  // create a method that will return postorder traversal of the tree
   postorder() {
     let result = [];
     let _walk = (node) => {
@@ -97,7 +96,8 @@ class BinarySearchTree {
     _walk(this);
     return result;
   }
-  breadthFirst() {
+  // create a method that will return breadth first traversal of the tree
+  breadthFirstLog() {
     let result = [];
     let queue = [];
     queue.push(this);
@@ -115,26 +115,12 @@ class BinarySearchTree {
   }
 }
 
-const tree = new BinarySearchTree(50);
-tree.insert(30);
-tree.insert(70);
-tree.insert(100);
-tree.insert(60);
-tree.insert(59);
-tree.insert(20);
-tree.insert(45);
-tree.insert(35);
-tree.insert(85);
-tree.insert(105);
-tree.insert(10);
-tree.insert(15);
-tree.insert(25);
-tree.insert(5);
-// call preorder on tree
-console.log('ini preorder : ', tree.preorder());
-// call inorder on tree
-console.log('ini inorder : ', tree.inorder());
-// call postorder on tree
-console.log('ini postorder : ', tree.postorder());
-// call breadth first on tree
-console.log('ini breadth first : ', tree.breadthFirst());
+const bst = new BinarySearchTree(10);
+bst.insert(6);
+bst.insert(15);
+bst.insert(3);
+bst.insert(8);
+bst.insert(20);
+console.log('preorder: ', bst.preorder());
+console.log('inorder: ', bst.inorder());
+console.log('postorder: ', bst.postorder());
